@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { UserRegistrationService } from "../fetch-api-data.service";
+import { FetchApiDataService } from "../fetch-api-data.service";
+import { Router } from "@angular/router";
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -15,9 +16,10 @@ export class LoginComponent implements OnInit {
 	@Input() userData = { Username: "", Password: "" };
 
 	constructor(
-		public fetchApiData: UserRegistrationService,
+		public fetchApiData: FetchApiDataService,
 		public dialogRef: MatDialogRef<LoginComponent>,
-		public snackBar: MatSnackBar
+		public snackBar: MatSnackBar,
+		public router: Router
 	) { }
 
 	// Called once the component has received all inputs 
@@ -32,12 +34,13 @@ export class LoginComponent implements OnInit {
 			this.snackBar.open("Login successful.", "OK", {
 				duration: 2000
 			});
+			this.router.navigate(["movies"]);
 		}, (response) => {
 			console.log(response);
 			this.snackBar.open(response, "OK", {
 				duration: 2000
 			});
 		});
+	
 	};
-
-}
+};

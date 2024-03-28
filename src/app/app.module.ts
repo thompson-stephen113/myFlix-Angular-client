@@ -9,17 +9,29 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatIconModule } from "@angular/material/icon";
 
+import { RouterModule, Routes } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { WelcomePageComponent } from "./welcome-page/welcome-page.component";
 import { RegistrationComponent } from "./registration/registration.component";
 import { LoginComponent } from "./login/login.component";
+import { MovieCardComponent } from "./movie-card/movie-card.component";
+
+const appRoutes: Routes = [
+    { path: "welcome", component: WelcomePageComponent },
+    { path: "movies", component: MovieCardComponent },
+    { path: "", redirectTo: "welcome", pathMatch: "prefix" },
+];
 
 @NgModule({
     declarations: [
         AppComponent,
+        WelcomePageComponent,
         RegistrationComponent,
-        LoginComponent
+        LoginComponent,
+        MovieCardComponent
     ],
     imports: [
         BrowserModule,
@@ -32,7 +44,9 @@ import { LoginComponent } from "./login/login.component";
         MatButtonModule,
         MatCardModule,
         MatFormFieldModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatIconModule,
+        RouterModule.forRoot(appRoutes)
     ],
     providers: [],
     bootstrap: [AppComponent]
