@@ -48,6 +48,9 @@ const appRoutes: Routes = [
         MatIconModule,
         RouterModule.forRoot(appRoutes)
     ],
+    exports: [
+        RouterModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })

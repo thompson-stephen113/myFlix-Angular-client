@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
 	loginUser(): void {
 		this.fetchApiData.userLogin(this.userData).subscribe((response) => {
 			// Logic for successful user registration
+			localStorage.setItem("user", JSON.stringify(response.user));
+			localStorage.setItem("token", response.token);
 			this.dialogRef.close();
 			console.log(response);
 			this.snackBar.open("Login successful.", "OK", {
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
 			this.router.navigate(["movies"]);
 		}, (response) => {
 			console.log(response);
-			this.snackBar.open(response, "OK", {
+			this.snackBar.open("Incorrect credentials.", "OK", {
 				duration: 2000
 			});
 		});
