@@ -1,1 +1,109 @@
-<p>profile works!</p>
+<navbar></navbar>
+
+<!-- User info -->
+<mat-card class="user-info">
+    <!-- Username -->
+    <mat-card-header class="user-info-header">
+        <mat-card-title>{{userData.Username}}</mat-card-title>
+    </mat-card-header>
+
+    <!-- User details -->
+    <mat-card-content>
+        <p>Email: {{userData.Email}}</p>
+
+        <p>Birthday: {{userData.Birthday}}</p>
+    </mat-card-content>
+</mat-card>
+
+<!-- Update user info -->
+<mat-card class="update-user">
+    <mat-card-header class="update-user-header">
+        <mat-card-title>Update Profile</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <!-- Update user form -->
+        <form>
+            <!-- Update username -->
+            <label>Username</label>
+
+            <mat-form-field class="input-field">
+                <input
+                    matInput
+                    [(ngModel)]="userData.Username"
+                    placeholder="Username"
+                    type="text"
+                    name="Username"
+                    required=""
+                >
+            </mat-form-field>
+
+            <!-- Update email -->
+            <label>Email</label>
+
+            <mat-form-field class="input-field">
+                <input
+                    matInput
+                    [(ngModel)]="userData.Email"
+                    placeholder="Email"
+                    type="email"
+                    name="Email"
+                    required
+                >
+            </mat-form-field>
+
+            <!-- Update Birthday -->
+            <mat-form-field>
+                <label>Birthday</label>
+
+                <input
+                    matInput
+                    [(ngModel)]="userData.Birthday"
+                    placeholder="Birthday"
+                    type="date"
+                    name="Birthday"
+                    required
+                >
+            </mat-form-field>
+        </form>
+
+        <!-- Update and Delete buttons -->
+        <mat-card-actions>
+            <button
+                mat-raised-button
+                style="margin-right: 20px;"
+                (click)="updateUser()"
+                color="primary"
+                type="submit"
+            >
+                Update
+            </button>
+
+            <button
+                mat-raised-button
+                (click)="deleteUser()"
+                color="warn"
+            >
+                Delete account
+            </button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>
+
+<!-- Favorite movies -->
+<div class="favorite-movies">
+    <h1>Favorites</h1>
+
+    <!-- Empty favorites list -->
+    <div
+        class="empty-list"
+        *ngIf="FavoriteMovies.length === 0"
+    >
+        <p>No favorites yet!</p>
+    </div>
+
+    <!-- Favorites list -->
+    <div>
+
+    </div>
+</div>
