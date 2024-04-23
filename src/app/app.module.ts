@@ -10,28 +10,41 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatIconModule } from "@angular/material/icon";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 import { RouterModule, Routes } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 import { WelcomePageComponent } from "./welcome-page/welcome-page.component";
 import { RegistrationComponent } from "./registration/registration.component";
 import { LoginComponent } from "./login/login.component";
+import { ProfileComponent } from "./profile/profile.component";
 import { MovieCardComponent } from "./movie-card/movie-card.component";
+import { MovieDescriptionComponent } from "./movie-description/movie-description.component";
+import { DirectorComponent } from "./director/director.component";
+import { GenreComponent } from "./genre/genre.component";
+
 
 const appRoutes: Routes = [
     { path: "welcome", component: WelcomePageComponent },
     { path: "movies", component: MovieCardComponent },
+    { path: "profile", component: ProfileComponent},
     { path: "", redirectTo: "welcome", pathMatch: "prefix" },
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
+        NavbarComponent,
         WelcomePageComponent,
         RegistrationComponent,
         LoginComponent,
-        MovieCardComponent
+        ProfileComponent,
+        MovieCardComponent,
+        MovieDescriptionComponent,
+        DirectorComponent,
+        GenreComponent
     ],
     imports: [
         BrowserModule,
@@ -46,6 +59,7 @@ const appRoutes: Routes = [
         MatFormFieldModule,
         MatSnackBarModule,
         MatIconModule,
+        MatToolbarModule,
         RouterModule.forRoot(appRoutes)
     ],
     exports: [
