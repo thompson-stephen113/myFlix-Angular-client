@@ -1,50 +1,66 @@
 <navbar></navbar>
 
-<div style="display: flex;">
-    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
-        <mat-card-header>
-            <mat-card-title>{{ movie.Title }}</mat-card-title>
-            <mat-card-subtitle>Director: {{ movie.Director.Name }}</mat-card-subtitle>
-        </mat-card-header>
-        
-        <img src={{ movie.ImagePath }} alt="{{ movie.Title }}" />
+<div class="movies-header">
+	<h1>Movies</h1>
 
-        <mat-card-actions>
-            <!-- Description button -->
-            <button
-                mat-button
-                (click)="openDescription(movie.Description)"
-                color="primary"
-            >
-                Description
-            </button>
+	<div class="movie-card-container">
+		<mat-card *ngFor="let movie of movies;" class="movie-card">
+			<div class="movie-details">
+				<mat-card-header class="card-header">
+					<mat-card-title class="card-title">{{ movie.Title }}</mat-card-title>
+					
+					<mat-card-subtitle class="card-subtitle">Director: {{ movie.Director.Name }}</mat-card-subtitle>
+				</mat-card-header>
+				
+				<!-- Movie poster -->
+				<img
+					mat-card-image
+					[src]="movie.ImagePath"
+					[alt]="movie.Title"
+				/>
 
-            <!-- Director button -->
-            <button
-                mat-button
-                (click)="openDirector(
-                    movie.Director.Name,
-                    movie.Director.Bio,
-                    movie.Director.Birth,
-                    movie.Director.Death
-                )"
-                color="primary"
-            >
-                Director
-            </button>
+				<mat-card-actions class="card-actions">
+					<!-- Description button -->
+					<button
+						mat-button
+						(click)="openDescription(movie.Description)"
+						color="primary"
+					>
+						Description
+					</button>
 
-            <!-- Genre button -->
-            <button
-                mat-button
-                (click)="openGenre(movie.Genre.Name, movie.Genre.Description)"
-                color="primary"
-            >
-                Genre
-            </button>
+					<!-- Director button -->
+					<button
+						mat-button
+						(click)="openDirector(
+							movie.Director.Name,
+							movie.Director.Bio,
+							movie.Director.Birth,
+							movie.Director.Death
+						)"
+						color="primary"
+					>
+						Director
+					</button>
 
-            <!-- Add to Favorites icon -->
-            <mat-icon>favorite_border</mat-icon>
-        </mat-card-actions>
+					<!-- Genre button -->
+					<button
+						mat-button
+						(click)="openGenre(movie.Genre.Name, movie.Genre.Description)"
+						color="primary"
+					>
+						Genre
+					</button>
 
-    </mat-card>
+					<!-- Add to Favorites icon -->
+					<button
+						mat-icon-button
+						(click)="isFavorite(movie._id) ? deleteFavorite(movie._id) : addFavorite(movie._id)"    
+					>
+						<mat-icon>{{ isFavorite(movie._id) ? "favorite" : "favorite_border" }}</mat-icon>
+					</button>
+				</mat-card-actions>
+			</div>
+		</mat-card>
+	</div>
 </div>

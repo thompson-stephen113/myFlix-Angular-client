@@ -10,7 +10,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 	selector: "registration-form",
 
 	templateUrl: "./registration.component.html",
-	styleUrl: "./registration.component.css"
+	styleUrl: "./registration.component.scss"
 })
 
 export class RegistrationComponent implements OnInit {

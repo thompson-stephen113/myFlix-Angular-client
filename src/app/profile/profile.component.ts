@@ -2,7 +2,12 @@ import { Component, OnInit, Input } from "@angular/core";
 import { FetchApiDataService } from "../fetch-api-data.service";
 import { Router } from "@angular/router";
 
+import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
+
+import { MovieDescriptionComponent } from "../movie-description/movie-description.component";
+import { DirectorComponent } from "../director/director.component";
+import { GenreComponent } from "../genre/genre.component";
 
 
 @Component({
@@ -10,7 +15,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 	selector: "app-profile",
 
 	templateUrl: "./profile.component.html",
-	styleUrl: "./profile.component.css"
+	styleUrl: "./profile.component.scss"
 })
 
 export class ProfileComponent implements OnInit {
@@ -28,6 +33,7 @@ export class ProfileComponent implements OnInit {
 	 */
 	constructor(
 		public fetchApiData: FetchApiDataService,
+		public dialog: MatDialog,
 		public snackBar: MatSnackBar,
 		private router: Router
 	) { };
@@ -123,5 +129,80 @@ export class ProfileComponent implements OnInit {
 				duration: 2000
 			});
 		});
+	};
+
+	/**
+	 * Opens dialog for movie description
+	 * @function
+	 * @name openDescription
+	 * @param {String} description - The description of the movie.
+	 */
+	openDescription(description: string): void {
+		this.dialog.open(MovieDescriptionComponent, {
+			data: {
+				Description: description,
+			},
+			width: "500px"
+		});
+	};
+
+	/**
+	 * Opens dialog for movie director
+	 * @function
+	 * @name openDirector
+	 * @param {String} name - The name of the director.
+	 * @param {String} bio - The biography of the director.
+	 * @param {String} birth -The birth date of the director.
+	 * @param {String} death - The death date of the director (if applicable).
+	 */
+	openDirector(
+		name: string,
+		bio: string,
+		birth: string,
+		death: string
+	): void {
+		this.dialog.open(DirectorComponent, {
+			data: {
+				Name: name,
+				Bio: bio,
+				Birth: birth,
+				Death: death
+			},
+			width: "500px"
+		});
+	};
+
+	/**
+	 * Opens dialog for movie genre
+	 * @function
+	 * @name openGenre
+	 * @param {String} name - The name of the genre.
+	 * @param {String} description - The description of the genre.
+	 */
+	openGenre(name: string, description: string): void {
+		this.dialog.open(GenreComponent, {
+			data: {
+				Name: name,
+				Description: description
+			},
+			width: "500px"
+		});
+	};
+
+	/**
+	 * Checks if a movie is a favorite of the user
+	 * @function
+	 * @name isFavorite
+	 * @param {any} movie - The movie being checked.
+	 * @returns {boolean} - The boolean of if the movie is favorite or not.
+	 */
+	isFavorite(movie: any): any {
+		const movieID = movie._id;
+
+		if (this.FavoriteMovies.some((movie) => movie === movieID)) {
+			return true;
+		} else {
+			return false;
+		};
 	};
 };

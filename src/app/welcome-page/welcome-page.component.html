@@ -1,23 +1,23 @@
-<div class="main-page">
+<div class="welcome-page-container">
 	<h1>Welcome to myFlix</h1>
 
-	<!-- Sign Up button -->
-	<button
-		mat-raised-button
-		(click)="registerUser()"
-		style="margin-right: 10px;"
-		color="primary"
-	>
-		Sign Up
-	</button>
+	<div class="button-container">
+		<!-- Sign Up button -->
+		<button
+			class="welcome-button"
+			mat-raised-button
+			(click)="registerUser()"
+		>
+			Sign Up
+		</button>
 
-	<!-- Login button -->
-	<button
-		mat-raised-button
-		(click)="loginUser()"
-		style="margin-right: 10px;"
-		color="primary"
-	>
-		Login
-	</button>
+		<!-- Login button -->
+		<button
+			class="welcome-button"
+			mat-raised-button
+			(click)="loginUser()"
+		>
+			Login
+		</button>
+	</div>
 </div>

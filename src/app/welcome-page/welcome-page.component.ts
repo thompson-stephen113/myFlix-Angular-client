@@ -11,7 +11,7 @@ import { RegistrationComponent } from "../registration/registration.component";
 	selector: "welcome-page",
 
 	templateUrl: "./welcome-page.component.html",
-	styleUrl: "./welcome-page.component.css"
+	styleUrl: "./welcome-page.component.scss"
 })
 
 export class WelcomePageComponent implements OnInit {

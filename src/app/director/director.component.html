@@ -5,7 +5,7 @@
 <mat-card-content class="director-content">
     <p><span>Bio: </span>{{ data.Bio }}</p>
 
-    <p><span>Birth: </span>{{ data.Birth }}</p>
+    <p><span>Birth: </span>{{ data.Birth | date: "longDate" }}</p>
 
     <p><span>Death: </span>{{ data.Death }}</p>
 </mat-card-content>

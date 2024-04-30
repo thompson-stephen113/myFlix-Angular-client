@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 	selector: "movie-description",
 
 	templateUrl: "./movie-description.component.html",
-	styleUrl: "./movie-description.component.css"
+	styleUrl: "./movie-description.component.scss"
 })
 
 export class MovieDescriptionComponent implements OnInit {

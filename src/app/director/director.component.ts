@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 	selector: "movie-director",
 
 	templateUrl: "./director.component.html",
-	styleUrl: "./director.component.css"
+	styleUrl: "./director.component.scss"
 })
 
 export class DirectorComponent implements OnInit {

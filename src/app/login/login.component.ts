@@ -11,7 +11,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 	selector: "login-form",
 
 	templateUrl: "./login.component.html",
-	styleUrl: "./login.component.css"
+	styleUrl: "./login.component.scss"
 })
 
 export class LoginComponent implements OnInit {
@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
 	 * Logs existing users in
 	 * @function
 	 * @name loginUser
-	 * @returns Message "Login successful."
-	 * @returns Message "Incorrect credentials."
+	 * @returns Message "Login successful" or Message "Incorrect credentials".
 	 */
 	loginUser(): void {
 		this.fetchApiData.userLogin(this.userData).subscribe((response) => {

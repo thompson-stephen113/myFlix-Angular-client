@@ -9,7 +9,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 	selector: "navbar",
 
 	templateUrl: "./navbar.component.html",
-	styleUrl: "./navbar.component.css"
+	styleUrl: "./navbar.component.scss"
 })
 
 export class NavbarComponent implements OnInit {
