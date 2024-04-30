@@ -7,13 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "css"
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
-        },
-        "@schematics/angular:pipe": {
-          "standalone": false
+          "style": "scss"
         }
       },
       "root": "",
@@ -21,16 +15,16 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/",
+            "outputPath": "dist/myFlix-Angular-client",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "css",
+            "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -80,7 +74,7 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "css",
+            "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
             "scripts": []
@@ -93,6 +87,6 @@
     }
   },
   "cli": {
-    "analytics": "cdb18f9f-80cb-46c1-8d09-5b3a333d00c7"
+    "analytics": false
   }
 }

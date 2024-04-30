@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    height: 100%;
+    background-color: black;
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+    transition: opacity .2s;
+}
+
+button:hover {
+    transform: translateY(-0.10em);
+}
+
+button:focus {
+    transition: opacity .2s;
+}
+
+.mat-dialog-container {
+    color: white;
+    background-color: rgb(77, 77, 77);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,28 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 999;
+    color: white;
+    background-color: rgb(77, 77, 77);
+    border-bottom: 1px solid lightgray;
+}
+
+.logo-button {
+    font-size: xx-large;
+    transform: none;
+
+    :hover {
+        opacity: 10;
+    }
+}
+
+.navbar-button {
+    transform: scale(2);
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
