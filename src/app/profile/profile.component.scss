@@ -3,49 +3,129 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: fit-content;
     margin: auto 150px;
-    background-color: rgb(77, 77, 77);
     color: white;
+}
+
+.profile-background {
+    margin: 150px 25px 0px;
+    padding: 30px;
+    background-color: rgb(77, 77, 77);
+    border-radius: 50px;
 }
 
 h1 {
     text-align: center;
 }
 
-.profile-background {
-    padding: 30px;
-    background-color: black;
-    border-radius: 50px;
-}
-
 .user-details {
     margin-bottom: 25px;
 }
 
-.update-user-header {
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
 .user-info {
+    background-color: rgb(77, 77, 77);
+    box-shadow: none;
+
     span {
-        font-weight: 600;
+        font-weight: 500;
     }
 }
 
-.input-field {
-    margin: 10px;
-    padding: 5px;
-    color: black;
-    background-color: white;
-    border-radius: 5px;
+.update-user {
+    background-color: rgb(77, 77, 77);
+    box-shadow: none;
+}
+
+.update-user-header {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.form-label {
+    margin-right: 15px;
 }
 
 .button-container {
     justify-content: center;
 }
 
+.update-button {
+    margin: 5px;
+    padding: 20px;
+    font-weight: 500;
+    color: black;
+    background-color: limegreen !important;
+    border-radius: 50px;
+    border-bottom: 2px solid lightgray;
+}
+
+.delete-button {
+    margin: 5px;
+    padding: 20px;
+    font-weight: 500;
+    border-radius: 50px;
+    border-bottom: 2px solid lightgray;    
+}
+
 .empty-list {
     text-align: center;
+}
+
+.favorite-movies {
+    margin: 25px 150px;
+    padding: 30px;
+}
+
+.movie-card {
+    text-align: center;
+    margin: 20px 20px 100px;
+    padding: 5px;
+    width: 400px;
+    height: auto;
+    border-bottom: 3px solid gray;
+    border-radius: 5px;
+    background-color: rgb(77, 77, 77);
+}
+
+img {
+    margin: 15px;
+    min-height: 400px;
+    border: 3px solid white;
+}
+
+.card-header {
+    justify-content: center;
+    color: white;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card-actions {
+    justify-content: center;
+    font-weight: 500;
+}
+
+.movie-button {
+    margin: 5px;
+    padding: 20px;
+    color: black !important;
+    background-color: limegreen;
+    border-radius: 50px;
+    border-bottom: 2px solid lightgray;
+}
+
+.movie-button:last-child {
+    padding: 6px 0px 0px;
 }

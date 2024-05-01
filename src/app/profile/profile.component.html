@@ -15,7 +15,7 @@
             <mat-card-content class="user-details">
                 <p><span>Email:</span> {{ userData.Email }}</p>
     
-                <p><span>Birthday:</span> {{ userData.Birthday | date: "longDate" }}</p>
+                <p><span>Birthday:</span> {{ userData.Birthday | date: "longDate" : "UTC" }}</p>
             </mat-card-content>
         </mat-card>
     
@@ -29,23 +29,23 @@
                 <!-- Update user form -->
                 <form>
                     <!-- Update username -->
-                    <label>Username</label>
+                    <label class="form-label">Username</label>
     
-                    <mat-form-field class="input-field">
+                    <mat-form-field>
                         <input
                             matInput
                             [(ngModel)]="userData.Username"
                             placeholder="Username"
                             type="text"
                             name="Username"
-                            required=""
+                            required
                         >
                     </mat-form-field>
     
                     <br>
     
                     <!-- Update email -->
-                    <label>Email</label>
+                    <label class="form-label">Email</label>
     
                     <mat-form-field class="input-field">
                         <input
@@ -61,7 +61,7 @@
                     <br>
     
                     <!-- Update Birthday -->
-                    <label>Birthday</label>
+                    <label class="form-label">Birthday</label>
 
                     <mat-form-field class="input-field">    
                         <input
@@ -78,99 +78,101 @@
                 <!-- Update and Delete buttons -->
                 <mat-card-actions class="button-container">
                     <button
+                        class="update-button"
                         mat-raised-button
                         style="margin-right: 20px;"
-                        (click)="updateUser()"
-                        color="primary"
+                        (click)="updateProfile()"
                         type="submit"
                     >
                         Update
                     </button>
     
                     <button
+                        class="delete-button"
                         mat-raised-button
-                        (click)="deleteUser()"
+                        (click)="deleteProfile()"
                         color="warn"
                     >
                         Delete account
                     </button>
                 </mat-card-actions>
             </mat-card-content>
-        </mat-card>
-    
-        <!-- Favorite movies -->
-        <div class="favorite-movies">
-            <h1>Favorites</h1>
-    
-            <!-- Empty favorites list -->
-            <div
-                class="empty-list"
-                *ngIf="FavoriteMovies.length === 0"
-            >
-                <p>No favorites yet!</p>
-            </div>
-    
-            <!-- Favorites list -->
-            <div class="favorites-list">
-                <mat-card *ngFor="let movie of FavoriteMovies;" class="movie-details">
-                    <div class="movie-details">
-                        <mat-card-header class="card-header">
-                            <mat-card-title class="card-title">{{ movie.Title }}</mat-card-title>
-                            
-                            <mat-card-subtitle class="card-subtitle">Director: {{ movie.Director.Name }}</mat-card-subtitle>
-                        </mat-card-header>
+        </mat-card> 
+    </div>    
+
+    <!-- Favorite movies -->
+    <div class="favorite-movies">
+        <h1>Favorites</h1>
+
+        <!-- Empty favorites list -->
+        <div
+            class="empty-list"
+            *ngIf="FavoriteMovies.length === 0"
+        >
+            <p>No favorites yet!</p>
+        </div>
+
+        <!-- Favorites list -->
+        <div class="favorites-list">
+            <mat-card *ngFor="let movie of FavoriteMovies;" class="movie-card">
+                <div class="movie-details">
+                    <mat-card-header class="card-header">
+                        <mat-card-title class="card-title">{{ movie.Title }}</mat-card-title>
                         
-                        <!-- Movie poster -->
-                        <img
-                            mat-card-image
-                            [src]="movie.ImagePath"
-                            [alt]="movie.Title"
-                        />
-        
-                        <mat-card-actions class="card-actions">
-                            <!-- Description button -->
-                            <button
-                                mat-button
-                                (click)="openDescription(movie.Description)"
-                                color="primary"
-                            >
-                                Description
-                            </button>
-        
-                            <!-- Director button -->
-                            <button
-                                mat-button
-                                (click)="openDirector(
-                                    movie.Director.Name,
-                                    movie.Director.Bio,
-                                    movie.Director.Birth,
-                                    movie.Director.Death
-                                )"
-                                color="primary"
-                            >
-                                Director
-                            </button>
-        
-                            <!-- Genre button -->
-                            <button
-                                mat-button
-                                (click)="openGenre(movie.Genre.Name, movie.Genre.Description)"
-                                color="primary"
-                            >
-                                Genre
-                            </button>
-        
-                            <!-- Delete favorite -->
-                            <button
-                                mat-icon-button
-                                (click)="deleteFavorite(movie._id)"
-                            >
-                                <mat-icon style="transform: scale(1.5);">favorite</mat-icon>
-                            </button>
-                        </mat-card-actions>
-                    </div>
-                </mat-card>
-            </div>
-        </div>    
+                        <mat-card-subtitle class="card-subtitle">Director: {{ movie.Director.Name }}</mat-card-subtitle>
+                    </mat-card-header>
+                    
+                    <!-- Movie poster -->
+                    <img
+                        mat-card-image
+                        [src]="movie.ImagePath"
+                        [alt]="movie.Title"
+                    />
+    
+                    <mat-card-actions class="card-actions">
+                        <!-- Description button -->
+                        <button
+                            class="movie-button"
+                            mat-button
+                            (click)="openDescription(movie.Description)"
+                        >
+                            Description
+                        </button>
+    
+                        <!-- Director button -->
+                        <button
+                            class="movie-button"
+                            mat-button
+                            (click)="openDirector(
+                                movie.Director.Name,
+                                movie.Director.Bio,
+                                movie.Director.Birth,
+                                movie.Director.Death
+                            )"
+                        >
+                            Director
+                        </button>
+    
+                        <!-- Genre button -->
+                        <button
+                            class="movie-button"
+                            mat-button
+                            (click)="openGenre(movie.Genre.Name, movie.Genre.Description)"
+                        >
+                            Genre
+                        </button>
+    
+                        <!-- Delete favorite -->
+                        <button
+                            class="movie-button"
+                            mat-icon-button
+                            (click)="deleteFavorite(movie._id)"
+                        >
+                            <mat-icon>favorite</mat-icon>
+                        </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
+        </div>
     </div>
 </div>

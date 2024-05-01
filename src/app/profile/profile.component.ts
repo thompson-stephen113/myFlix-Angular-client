@@ -19,7 +19,7 @@ import { GenreComponent } from "../genre/genre.component";
 })
 
 export class ProfileComponent implements OnInit {
-	// Defines component's input
+	// Defines component"s input
 	@Input() userData = { Username: "", Password: "", Email: "", Birthday: "", FavoriteMovies: [] };
 	FavoriteMovies: any[] = [];
 	movies: any[] = [];
@@ -38,10 +38,9 @@ export class ProfileComponent implements OnInit {
 		private router: Router
 	) { };
 
-	// Initializes component with getProflie() and getFavorites() executed
+	// Initializes component with getProflie() executed
 	ngOnInit(): void {
 		this.getProfile();
-		this.getFavorites();
 	};
 
 	/**
@@ -63,13 +62,14 @@ export class ProfileComponent implements OnInit {
 	/**
 	 * Allows users to update their profile
 	 * @function
-	 * @name updateUser
+	 * @name updateProfile
 	 * @returns Message "Profile updated successfully."
 	 */
-	updateUser(): void {
+	updateProfile(): void {
 		this.fetchApiData.updateUser(this.userData).subscribe((response) => {
 			console.log("Updated", response);
 			localStorage.setItem("user", JSON.stringify(response));
+			this.getProfile();
 
 			// Opens dialog
 			this.snackBar.open("Profile updated successfully.", "OK", {
@@ -81,32 +81,21 @@ export class ProfileComponent implements OnInit {
 	/**
 	 * Allows users to delete their account
 	 * @function
-	 * @name deleteUser
-	 * @returns Message "Are you sure you want to delete your account?"
-	 * @returns Message "Deleted user."
+	 * @name deleteProfile
+	 * @returns Message "User deleted successfully."
 	 */
-	deleteUser(): void {
+	deleteProfile(): void {
 		if (confirm("Are you sure you want to delete your account?")) {
-			this.fetchApiData.deleteUser().subscribe((response) => {
-				console.log("Deleted user.", response);
+			this.router.navigate(["welcome"]).then(() => {
 				localStorage.clear();
-
-				// Navigates to "welcome" route
-				this.router.navigate(["welcome"]);
+				this.snackBar.open("Account deleted successfully.", "OK", {
+					duration: 2000
+				});
+			})
+			this.fetchApiData.deleteUser().subscribe((response) => {
+				console.log(response);
 			});
 		};
-	};
-
-	/**
-	 * Gets user Favorite Movies
-	 * @function
-	 * @name getFavorites
-	 */
-	getFavorites(): void {
-		this.user = this.fetchApiData.getUser();
-		this.userData.FavoriteMovies = this.user.FavoriteMovies;
-		this.FavoriteMovies = this.user.FavoriteMovies;
-		console.log("Favorites: " + `${this.FavoriteMovies}`);
 	};
 
 	/**
@@ -121,7 +110,6 @@ export class ProfileComponent implements OnInit {
 		this.userData.Username = this.user.Username;
 		this.fetchApiData.deleteFavorite(movieID).subscribe((response) => {
 			localStorage.setItem("user", JSON.stringify(response));
-			this.getFavorites();
 			this.getProfile();
 
 			// Opens dialog

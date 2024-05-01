@@ -129,12 +129,10 @@ export class MovieCardComponent implements OnInit {
 	 * Checks if a movie is a favorite of the user
 	 * @function
 	 * @name isFavorite
-	 * @param {any} movie - The movie being checked.
+	 * @param {any} movieID - The movie being checked.
 	 * @returns {boolean} - The boolean of if the movie is favorite or not.
 	 */
-	isFavorite(movie: any): any {
-		const movieID = movie._id;
-
+	isFavorite(movieID: any): any {
 		if (this.FavoriteMovies.some((movie) => movie === movieID)) {
 			return true;
 		} else {
@@ -154,6 +152,8 @@ export class MovieCardComponent implements OnInit {
 		this.fetchApiData.addFavorite(movieID).subscribe((response) => {
 			localStorage.setItem("user", JSON.stringify(response));
 			this.getFavorites();
+
+			// Opens dialog
 			this.snackBar.open("Added to Favorites.", "OK", {
 				duration: 2000
 			});

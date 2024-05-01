@@ -163,7 +163,7 @@ export class FetchApiDataService {
 	addFavorite(movieID: string): Observable<any> {
 		const user = JSON.parse(localStorage.getItem("user") || "{}");
 		const token = localStorage.getItem("token");
-		return this.http.get(apiUrl + "users/" + user.Username + "/favorites-list/" + movieID, {headers: new HttpHeaders(
+		return this.http.post(apiUrl + "users/" + user.Username + "/favorites-list/" + movieID, null, {headers: new HttpHeaders(
 			{
 				Authorization: "Bearer " + token,
 			}
@@ -177,12 +177,13 @@ export class FetchApiDataService {
 	 * Makes the API call for the "allows existing users to update their info" endpoint
 	 * @function
 	 * @name updateUser
-	 * @param {any} userDetails - The user whose details are being updated.
+	 * @param {any} userChanges - The changes made by the user.
 	 * @returns {Observable<any>} - The Observable of the API response.
 	 */
-	updateUser(userDetails: any): Observable<any> {
+	updateUser(userChanges: any): Observable<any> {
+		const user = JSON.parse(localStorage.getItem("user") || "{}");
 		const token = localStorage.getItem("token");
-		return this.http.get(apiUrl + "users/" + userDetails.Username + "/update-info", {headers: new HttpHeaders(
+		return this.http.put(apiUrl + "users/" + user.Username + "/update-info", userChanges, {headers: new HttpHeaders(
 			{
 				Authorization: "Bearer " + token,
 			}
@@ -202,7 +203,7 @@ export class FetchApiDataService {
 	deleteFavorite(movieID: string): Observable<any> {
 		const user = JSON.parse(localStorage.getItem("user") || "{}");
 		const token = localStorage.getItem("token");
-		return this.http.get(apiUrl + "users/" + user.Username + "/favorites-list/" + movieID, {headers: new HttpHeaders(
+		return this.http.delete(apiUrl + "users/" + user.Username + "/favorites-list/" + movieID, {headers: new HttpHeaders(
 			{
 				Authorization: "Bearer " + token,
 			}
@@ -221,7 +222,7 @@ export class FetchApiDataService {
 	deleteUser(): Observable<any> {
 		const user = JSON.parse(localStorage.getItem("user") || "{}");
 		const token = localStorage.getItem("token");
-		return this.http.get(apiUrl + "users/" + user.Username + "/update-info", {headers: new HttpHeaders(
+		return this.http.delete(apiUrl + "users/" + user.Username + "/update-info", {headers: new HttpHeaders(
 			{
 				Authorization: "Bearer " + token,
 			}

@@ -5,24 +5,35 @@
     width: 100%;
     height: 75px;
     z-index: 999;
-    color: white;
     background-color: rgb(77, 77, 77);
     border-bottom: 1px solid lightgray;
 }
 
 .logo-button {
+    padding: 15px;
+    color: white !important;
     font-size: xx-large;
     transform: none;
-
-    :hover {
-        opacity: 10;
-    }
-}
-
-.navbar-button {
-    transform: scale(2);
 }
 
 .spacer {
     flex: 1 1 auto;
+}
+
+.navbar-button .mat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+    color: white !important;
+    transform: scale(2);
+}
+
+.mat-toolbar .mat-button {
+    min-width: 0;
+    height: 75px;
+}
+
+.mat-toolbar .mat-button .mat-icon {
+    padding: 15px;
 }
